@@ -1,32 +1,25 @@
 package ie.gmit.sw.ai;
 
-import ie.gmit.sw.ai.cipher.PlayfairCipherMatrix;
+import ie.gmit.sw.ai.cipher.Decoder;
+import ie.gmit.sw.ai.cipher.PlayfairCipherDecoder;
 
 public class CipherBreaker {
 
     public static void main(String[] args) {
 
-        // Parent key
+        // Original encryption key.
         String key = "THEQUICKBROWNFXMPDVLAZYGS";
+        // Peace of text encrypted by this key
+        String encoded = "HEQEFIRCHITZMHUKOTXEDKWLHKHQVDSIEAKOZTXMTKOEEQSBXTDYHEUKUDBMKYZ";
 
-        // Testing PlayfairCipherMatrix
+        // Create decoder and aggregate it with encoded text.
+        Decoder playfairDecoder = new PlayfairCipherDecoder(encoded);
 
-        PlayfairCipherMatrix matrixContainer = PlayfairCipherMatrix.getInstance();
+        // Use decode function by providing it the key to decrypt text.
+        String decoded = playfairDecoder.decode(key);
 
-        // Construct new matrix from the key
-        matrixContainer.newMatrix(key);
-
-        // Get character coordinates
-        int[] coords = matrixContainer.getCoordsOfChar('A');
-        System.out.println("Row: " + coords[0] + " Column: " + coords[1]);
-
-        coords[0] = 3;
-        coords[1] = 1;
-
-        // Get character from coordinates
-        char character = matrixContainer.getCharFromCoords(coords);
-
-        System.out.println(character + " from (" + coords[0] + ", " + coords[1] + ")");
+        // Works fine.
+        System.out.println(decoded);
 
     }
 }
