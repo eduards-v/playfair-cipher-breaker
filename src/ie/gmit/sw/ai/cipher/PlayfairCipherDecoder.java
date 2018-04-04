@@ -7,9 +7,9 @@ public class PlayfairCipherDecoder implements Decoder {
     private PlayfairCipherMatrix matrixContainer; // Playfair cipher matrix
 
 
-    public PlayfairCipherDecoder(String encoded) {
+    public PlayfairCipherDecoder(String[] encodedPairs) {
         // Break incoming encoded string into digrams/bigrams (pairs of 2 characters).
-        this.encodedPairs = toDigrams(encoded);
+        this.encodedPairs = encodedPairs;
         matrixContainer = PlayfairCipherMatrix.getInstance();
     }
 
@@ -80,29 +80,5 @@ public class PlayfairCipherDecoder implements Decoder {
 
         // Return decrypted string text.
         return stringBuilder.toString();
-    }
-
-    // Considering to move to NGramsBuilder for encapsulation, because similar operation
-    // will be required later to decompose decoded text into 4-grams for heuristic evaluation.
-    private String[] toDigrams(String encoded){
-
-        int size = encoded.length();
-
-        // Check if string length is odd, append X to the end to make it even.
-        if(size % 2 != 0){
-            size++;
-            encoded = encoded + 'X';
-        }
-
-        // String array will be twice smaller than the length of an incoming String.
-        String x[] = new String[size/2];
-        int counter = 0;
-        for (int i = 0; i < size / 2; i++) {
-            // Take 2 chars at a time and place into an array index.
-            // Second parameter of substring is endIndex, but not inclusive.
-            x[i] = encoded.substring(counter, counter + 2);
-            counter = counter + 2; // Go to next 2 chars.
-        }
-        return x;
     }
 }
