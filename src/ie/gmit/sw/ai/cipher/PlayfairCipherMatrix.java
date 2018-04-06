@@ -1,6 +1,8 @@
 package ie.gmit.sw.ai.cipher;
 
 
+import ie.gmit.sw.ai.keys.Key;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,19 +29,15 @@ public class PlayfairCipherMatrix {
     private PlayfairCipherMatrix() {
     }
 
-    //
-    public void newMatrix(String key){
-        int ctr = 0;
+    // set new matrix to try and generate map for it
+    public void newMatrix(char[][] newMatrix){
 
         matrixMap = new HashMap<>();
-        matrix = new char[5][5];
+        matrix = newMatrix;
 
         for(int i = 0; i < 5; i++){
             for(int k = 0; k < 5; k++){
-
-                matrixMap.put(key.charAt(ctr), copyCoords(i, k));
-                matrix[i][k] = key.charAt(ctr);
-                ctr++;
+                matrixMap.put(newMatrix[i][k], copyCoords(i, k));
             }
         }
     }

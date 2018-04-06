@@ -2,6 +2,7 @@ package ie.gmit.sw.ai;
 
 import ie.gmit.sw.ai.cipher.Decoder;
 import ie.gmit.sw.ai.cipher.PlayfairCipherDecoder;
+import ie.gmit.sw.ai.keys.KeyRing;
 import ie.gmit.sw.ai.utils.NGramBuilder;
 
 public class CipherBreaker {
@@ -13,6 +14,7 @@ public class CipherBreaker {
         // Peace of text encrypted by this key
         String encoded = "HEQEFIRCHITZMHUKOTXEDKWLHKHQVDSIEAKOZTXMTKOEEQSBXTDYHEUKUDBMKYZ";
 
+        KeyRing keyRing = new KeyRing(10);
         // Prepare digrams for decoder
         NGramBuilder nGramBuilder = new NGramBuilder(encoded, 2);
 
@@ -20,7 +22,7 @@ public class CipherBreaker {
         Decoder playfairDecoder = new PlayfairCipherDecoder(nGramBuilder.build());
 
         // Use decode function by providing it the key to decrypt text.
-        String decoded = playfairDecoder.decode(key);
+        String decoded = playfairDecoder.decode(keyRing.getNew());
 
         // Works fine.
         System.out.println(decoded);

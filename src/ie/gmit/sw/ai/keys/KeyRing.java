@@ -13,6 +13,13 @@ public class KeyRing {
     }
 
     public Key getBest(){
+
+        // check if last candidate is better than best key so far
+        // before returning best key
+        if(keys[1].getScore() - keys[0].getScore() > 0){
+            keys[0] = keys[1];
+        }
+
         return keys[0];
     }
 
