@@ -5,10 +5,9 @@ import ie.gmit.sw.ai.utils.KeyMatrixGen;
 public class KeyTests {
 
     public static void main(String[] args) {
+
         KeyTransformer keyTransformer = new KeyTransformer();
 
-        //keyTransformer.swapRows(KeyMatrixGen.generateKeyMatrix());
-
-        keyTransformer.reverseMetrix(KeyMatrixGen.generateKeyMatrix());
+        keyTransformer.swapCells(KeyMatrixGen.generateKeyMatrix());
     }
 }

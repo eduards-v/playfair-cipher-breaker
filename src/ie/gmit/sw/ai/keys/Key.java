@@ -34,6 +34,10 @@ public class Key {
         this.score = score;
     }
 
+    public void transform(){
+        KeyTransformer.getInstance().transformKey(matrix);
+    }
+
     private char[][] copyMatrix(){
         char[][] copy = new char[5][5];
 

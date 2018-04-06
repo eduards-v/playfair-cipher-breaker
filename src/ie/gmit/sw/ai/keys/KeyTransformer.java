@@ -6,38 +6,46 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class KeyTransformer {
 
+    private static KeyTransformer instance = new KeyTransformer();
     private Random rand = ThreadLocalRandom.current();
+
+    private KeyTransformer() {
+    }
+
+    public static KeyTransformer getInstance() {
+        return instance;
+    }
 
     public void transformKey(char[][] matrix){
         int val = rand.nextInt(100);
 
         if (val == 5 || val == 55)
             // swap random rows
-            System.out.println(val);
+            swapRows(matrix);
         else if (val == 6 || val == 66)
             // swap random columns
-            System.out.println(val);
+            swapColumns(matrix);
         else if (val == 7 || val == 77)
             // flip all rows
-            System.out.println(val);
+            flipRows(matrix);
         else if (val == 8 || val == 88)
             // flip all columns
-            System.out.println(val);
+            flipColumns(matrix);
         else if (val == 9 || val == 99)
-            // new random key
-            System.out.println(val);
+            // reverse matrix
+            reverseMetrix(matrix);
         else
             // swap single cells
-            System.out.println(val);
+            swapCells(matrix);
     }
 
-    public void swapRows(char[][] matrix){
+    private void swapRows(char[][] matrix){
 
-        System.out.println("Old matrix");
-        printMatrix(matrix);
         int index1 = rand.nextInt(5);
         int index2 = rand.nextInt(5);
 
+        // recursion to ensure random swapping in case
+        // both indexes turns out to be equal
         if (index1 == index2) swapRows(matrix);
 
         for (int i = 0; i < 5; i++){
@@ -45,15 +53,10 @@ public class KeyTransformer {
             matrix[index2][i] ^= matrix[index1][i];
             matrix[index1][i] ^= matrix[index2][i];
         }
-
-        System.out.println("Transformed matrix");
-        printMatrix(matrix);
-
     }
 
-    public void swapColumns(char[][] matrix){
-        System.out.println("Old matrix");
-        printMatrix(matrix);
+    private void swapColumns(char[][] matrix){
+
         int index1 = rand.nextInt(5);
         int index2 = rand.nextInt(5);
 
@@ -64,14 +67,9 @@ public class KeyTransformer {
             matrix[i][index2] ^= matrix[i][index1];
             matrix[i][index1] ^= matrix[i][index2];
         }
-
-        System.out.println("Transformed matrix");
-        printMatrix(matrix);
     }
 
-    public void flipRows(char[][] matrix){
-        System.out.println("Old matrix");
-        printMatrix(matrix);
+    private void flipRows(char[][] matrix){
 
         for (int i = 0; i < matrix.length; i++){
             for (int j = 0; j < matrix.length / 2; j++){
@@ -81,13 +79,9 @@ public class KeyTransformer {
             }
         }
 
-        System.out.println("New matrix");
-        printMatrix(matrix);
     }
 
-    public void flipColumns(char[][] matrix){
-        System.out.println("Old matrix");
-        printMatrix(matrix);
+    private void flipColumns(char[][] matrix){
 
         for (int i = 0; i < matrix.length / 2; i++){
             for (int j = 0; j < matrix.length; j++){
@@ -97,17 +91,25 @@ public class KeyTransformer {
             }
         }
 
-        System.out.println("New matrix");
-        printMatrix(matrix);
     }
 
-    public void reverseMetrix(char[][] matrix){
-        System.out.println("Old matrix");
-        printMatrix(matrix);
+    private void reverseMetrix(char[][] matrix){
         flipRows(matrix);
         flipColumns(matrix);
-        System.out.println("New matrix");
-        printMatrix(matrix);
+    }
+
+    private void swapCells(char[][] matrix){
+        int index1 = rand.nextInt(5);
+        int index2 = rand.nextInt(5);
+        int index3 = rand.nextInt(5);
+        int index4 = rand.nextInt(5);
+
+        if (index1 == index3 && index2 == index4) swapCells(matrix);
+
+        matrix[index1][index2] ^= matrix[index3][index4];
+        matrix[index3][index4] ^= matrix[index1][index2];
+        matrix[index1][index2] ^= matrix[index3][index4];
+
     }
 
     private void printMatrix(char[][] matrix){
