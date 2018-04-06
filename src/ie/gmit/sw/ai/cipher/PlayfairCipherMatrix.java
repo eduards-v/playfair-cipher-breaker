@@ -37,7 +37,7 @@ public class PlayfairCipherMatrix {
         for(int i = 0; i < 5; i++){
             for(int k = 0; k < 5; k++){
 
-                matrixMap.put(key.charAt(ctr), createCoordsArray(i, k));
+                matrixMap.put(key.charAt(ctr), copyCoords(i, k));
                 matrix[i][k] = key.charAt(ctr);
                 ctr++;
             }
@@ -47,7 +47,7 @@ public class PlayfairCipherMatrix {
     // Return coordinates of the associated character in the matrix
     public int[] getCoordsOfChar(char x){
         int[] coords = matrixMap.get(x);
-        return createCoordsArray(coords[0], coords[1]);
+        return copyCoords(coords[0], coords[1]);
     }
 
     // Returns a character from the matrix from passed coordinates.
@@ -58,7 +58,7 @@ public class PlayfairCipherMatrix {
     // Since array is a mutable object helper method is required to perform
     // defensive copying of coordinates array to ensure that map values
     // are consistent until new matrix is generated.
-    private int[] createCoordsArray(int x, int y){
+    private int[] copyCoords(int x, int y){
         int[] coords = new int[2];
         coords[0] = x;
         coords[1] = y;
