@@ -4,14 +4,11 @@ public class HeuristicsTests {
 
     public static void main(String[] args) {
 
-//        String encoded = "HEQEFIRCHITZMHUKOTXEDKWLHKHQVDSIEAKOZTXMTKOEEQSBXTDYHEUKUDBMKYZ";
-//
-//        HeuristicsCalculator calc = new HeuristicsCalculator();
-//
-//        calc.scoreDecoding(encoded);
+        String encoded = "HEQEFIRCHITZMHUKOTXEDKWLHKHQVDSIEAKOZTXMTKOEEQSBXTDYHEUKUDBMKYZ";
 
-        QuadGramsRepo repo = QuadGramsRepo.getInstance();
+        HeuristicsCalculator calc = new HeuristicsCalculator();
 
-        repo.printMap();
+        System.out.println(calc.scoreDecoding(encoded));
+
     }
 }

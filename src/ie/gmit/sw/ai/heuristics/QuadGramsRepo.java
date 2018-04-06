@@ -25,7 +25,14 @@ public class QuadGramsRepo {
         for(String[] quad : allQuads){
             quadGramsMap.put(quad[0], logBaseFrequncy(quad[1], size));
         }
+    }
 
+    public double getQuadFrequency(String quad){
+
+        // Handling null if quadgram not found
+        if(!quadGramsMap.containsKey(quad)) return 0;
+
+        return quadGramsMap.get(quad);
     }
 
     private double logBaseFrequncy(String frequency, int size){
@@ -36,8 +43,5 @@ public class QuadGramsRepo {
         return logFrequency;
     }
 
-    public void printMap(){
-        quadGramsMap.forEach((k, v)-> System.out.println("Quad : " + k + " Frequency : " + v));
-    }
 
 }

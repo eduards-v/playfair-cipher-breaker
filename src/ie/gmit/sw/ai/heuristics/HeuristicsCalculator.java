@@ -4,6 +4,7 @@ import ie.gmit.sw.ai.utils.NGramBuilder;
 
 public class HeuristicsCalculator {
 
+    private QuadGramsRepo repo = QuadGramsRepo.getInstance();
 
     public double scoreDecoding(String decoding){
 
@@ -15,11 +16,10 @@ public class HeuristicsCalculator {
 
         // query quadgrams repository for each quadgram frequency
         for(String quad : quadgrams){
-            System.out.println(quad);
+            // sum up frequency of all quadgrams
+            score += repo.getQuadFrequency(quad);
         }
 
-        // sum up frequency of all quadgrams and return
-
-        return 0;
+        return score;
     }
 }
