@@ -1,5 +1,7 @@
 package ie.gmit.sw.ai.keys;
 
+import java.util.Arrays;
+
 public class Key {
 
     private char[][] matrix;
@@ -46,5 +48,15 @@ public class Key {
                 copy[i][j]=matrix[i][j];
 
         return copy;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(25);
+
+        for(char[] row : matrix){
+            builder.append(row);
+        }
+        return builder.toString();
     }
 }

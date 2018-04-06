@@ -39,6 +39,8 @@ public class KeyRing {
         // First candidate
         if(keys[1] == null){
             keys[1] = new Key(keys[2].getMatrix(), keys[2].getScore());
+
+            System.out.println("First Candidate: " + keys[1].toString() + " : " + keys[1].getScore());
             // transform new key
             keys[2].transform();
             return;
@@ -49,6 +51,7 @@ public class KeyRing {
         if (delta > 0){
             // set new candidate key
             keys[1] = new Key(keys[2].getMatrix(), keys[2].getScore());
+            System.out.println("New Candidate: " + keys[1].toString() + " : " + keys[1].getScore());
             // transform new key
             keys[2].transform();
         } else {
@@ -61,15 +64,20 @@ public class KeyRing {
                 // first best
                 if(keys[0] == null){
                     keys[0] = keys[1];
+                    System.out.println("First Best: " + keys[0].toString() + " : " + keys[0].getScore());
                 }else{
                     // check if candidate is better than best so far
                     if(keys[1].getScore() - keys[0].getScore() > 0){
                         keys[0] = keys[1];
+                        System.out.println("New Best: " + keys[0].toString() + " : " + keys[0].getScore());
+
                     }
                 }
 
                 // make worst key to be candidate to cool down algorithm
                 keys[1] = new Key(keys[2].getMatrix(), keys[2].getScore());
+                System.out.println("Cool Down Key: " + keys[1].toString() + " : " + keys[1].getScore());
+
                 // transform to try next key
                 keys[2].transform();
                 return;
