@@ -45,6 +45,12 @@ public class PlayfairCipherMatrix {
     // Return coordinates of the associated character in the matrix
     public int[] getCoordsOfChar(char x){
         int[] coords = matrixMap.get(x);
+
+        if(coords == null){
+            System.out.println("Caught NULL: " + x);
+
+            matrixMap.forEach((k,v) -> System.out.println("Key: " + k + " | " + "Value: " + v));
+        }
         return copyCoords(coords[0], coords[1]);
     }
 
