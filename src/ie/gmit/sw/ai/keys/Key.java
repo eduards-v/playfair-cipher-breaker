@@ -1,22 +1,12 @@
 package ie.gmit.sw.ai.keys;
 
-import java.util.Arrays;
-
 public class Key {
 
     private char[][] matrix;
     private double score;
 
-    public Key() {
-    }
-
-    public Key(char[][] matrix, double score) {
-        this.matrix = matrix;
+    public Key(double score) {
         this.score = score;
-    }
-
-    public Key(char[][] matrix) {
-        this.matrix = matrix;
     }
 
     // send a copy of matrix because it is frequently transformed
@@ -36,10 +26,6 @@ public class Key {
         this.score = score;
     }
 
-    public void transform(){
-        KeyTransformer.getInstance().transformKey(matrix);
-    }
-
     private char[][] copyMatrix(){
         char[][] copy = new char[5][5];
 
@@ -57,6 +43,8 @@ public class Key {
         for(char[] row : matrix){
             builder.append(row);
         }
+
+        builder.append(" : " ).append(score);
         return builder.toString();
     }
 }

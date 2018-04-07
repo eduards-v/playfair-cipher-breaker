@@ -1,18 +1,18 @@
-package ie.gmit.sw.ai.keys;
+package ie.gmit.sw.ai.cipher;
 
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class KeyTransformer {
+public class MatrixTransformer {
 
-    private static KeyTransformer instance = new KeyTransformer();
+    private static MatrixTransformer instance = new MatrixTransformer();
     private Random rand = ThreadLocalRandom.current();
 
-    private KeyTransformer() {
+    private MatrixTransformer() {
     }
 
-    public static KeyTransformer getInstance() {
+    public static MatrixTransformer getInstance() {
         return instance;
     }
 

@@ -1,7 +1,5 @@
 package ie.gmit.sw.ai.cipher;
 
-import ie.gmit.sw.ai.keys.Key;
-
 public class PlayfairCipherDecoder implements Decoder {
 
     // Target for decoding, contains pairs of characters from incoming resource.
@@ -17,12 +15,8 @@ public class PlayfairCipherDecoder implements Decoder {
 
     // Function logic adopted from: http://rosettacode.org/wiki/Playfair_cipher#Java
     @Override
-    public String decode(Key key) {
+    public String decode() {
         StringBuilder stringBuilder = new StringBuilder();
-
-        // Generate new matrix from the given key. It is fast enough
-        // even with the nested for loop since matrix dimension is only 5x5...
-        matrixContainer.newMatrix(key.getMatrix());
 
         // Positions of first and second character of digram relative to the cipher matrix.
         int coords_one[], coords_two[];

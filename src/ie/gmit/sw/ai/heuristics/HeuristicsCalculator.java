@@ -10,7 +10,7 @@ public class HeuristicsCalculator {
 
         double score = 0;
         // prep decoded text into quadgrams
-        NGramBuilder nGramBuilder = new NGramBuilder(decoding, 4, 1);
+        NGramBuilder nGramBuilder = new NGramBuilder(decoding, 4, 2);
 
         String [] quadgrams = nGramBuilder.build();
 
