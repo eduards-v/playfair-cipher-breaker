@@ -7,6 +7,11 @@ public class KeyMatrixGen {
 
     private static final char [] alphabet = "abcdefghiklmnopqrstuvwxyz".toUpperCase().toCharArray();
 
+    // Used for testing key as a starting point. Weirdly enough, original encryption key
+    // is getting beaten by other generated keys in heuristics comparisons....
+    private static final char [] realKey = "THEQUICKBROWNFXMPDVLAZYGS".toCharArray();
+
+
     public static char[][] generateKeyMatrix(){
         char[][] matrix = new char[5][5];
         int ctr = 0;

@@ -43,10 +43,10 @@ public class QuadGramsRepo {
         return quadGramsMap.get(quad);
     }
 
-    private double logBaseFrequncy(String frequency, double n){
+    private double logBaseFrequncy(String occurrance, double n){
         double logFrequency;
 
-        logFrequency = Math.log10(Double.valueOf(frequency) / n);
+        logFrequency = Math.log10(Double.valueOf(occurrance)/n);
 
         return logFrequency;
     }

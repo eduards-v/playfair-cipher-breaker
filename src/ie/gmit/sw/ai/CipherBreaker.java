@@ -12,7 +12,7 @@ public class CipherBreaker {
 
         Key cKey;
 
-        SimulatedAnnealingAlgorithm algorithm = new SimulatedAnnealingAlgorithm(10, 50000);
+        SimulatedAnnealingAlgorithm algorithm = new SimulatedAnnealingAlgorithm(50, 50000);
 
         cKey = algorithm.findBestKey();
 

@@ -78,12 +78,12 @@ public class SimulatedAnnealingAlgorithm {
                 } else {
                     // cool down algorithm to redirect search for better key
                     // rand.nextInt(10)
-                    if(rand.nextInt() < Math.exp(delta/i)){
+                    if(rand.nextDouble() < Math.exp(delta/i)){
 
                         System.out.println("Cooling Probability: " + Math.exp(delta/i));
                         System.out.println("COOL DOWN ALGORITHM AT TEMP = " + i);
                         // try set new best key from current parent
-                        if(parentScore - bestScore > 0){
+                        if(parentScore > bestScore){
                             bestScore = parentScore;
                             // copy parent key values to set best key values
                             keyRing[BEST_INDEX].setScore(bestScore);
@@ -97,8 +97,12 @@ public class SimulatedAnnealingAlgorithm {
                         parentScore = childScore;
                         keyRing[PARENT_INDEX].setScore(parentScore);
                         keyRing[PARENT_INDEX].setMatrix(cipherMatrix.copyMatrix());
+                    }else{
+                        System.out.println("NO BETTER KEY... NEXT");
                     }
                 }
+
+
             } // transitions loop
         } // temperature loop
 

@@ -10,9 +10,11 @@ public class HeuristicsCalculator {
 
         double score = 0;
         // prep decoded text into quadgrams
-        NGramBuilder nGramBuilder = new NGramBuilder(decoding, 4, 2);
+        NGramBuilder nGramBuilder = new NGramBuilder(decoding, 4, 1);
 
         String [] quadgrams = nGramBuilder.build();
+
+        // String [] test = {"HAPP", "APPY", "PPYD", "PYDA", "YDAY", "DAYS"};
 
         // query quadgrams repository for each quadgram frequency
         for(String quad : quadgrams){
