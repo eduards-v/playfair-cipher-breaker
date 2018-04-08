@@ -20,10 +20,18 @@ public class QuadGramsRepo {
         quadGramsMap = new HashMap<>();
 
         List<String[]> allQuads = TextFilesLoader.loadQuadGrams();
-        int size = allQuads.size();
-        // load quadgrams from text file
+        // total sum of all quadgrams occurrence from large text sample
+        double n = 0; // 4224127912
+        // count sum total of all quadgrams occurrence
         for(String[] quad : allQuads){
-            quadGramsMap.put(quad[0], logBaseFrequncy(quad[1], size));
+            n += Double.valueOf(quad[1]);
+            //System.out.println(size);
+        }
+
+        System.out.println(n);
+        // load quad grams and probability frequencies into map
+        for (String[] quad : allQuads){
+            quadGramsMap.put(quad[0], logBaseFrequncy(quad[1], n));
         }
     }
 
@@ -35,10 +43,10 @@ public class QuadGramsRepo {
         return quadGramsMap.get(quad);
     }
 
-    private double logBaseFrequncy(String frequency, int size){
+    private double logBaseFrequncy(String frequency, double n){
         double logFrequency;
 
-        logFrequency = Math.log10(new Double(frequency) / size);
+        logFrequency = Math.log10(Double.valueOf(frequency) / n);
 
         return logFrequency;
     }

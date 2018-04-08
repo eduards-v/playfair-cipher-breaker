@@ -16,9 +16,14 @@ public class HeuristicsCalculator {
 
         // query quadgrams repository for each quadgram frequency
         for(String quad : quadgrams){
-            // sum up frequency of all quadgrams
+            // sum up frequency of each quadgram
             score += repo.getQuadFrequency(quad);
         }
+
+//        System.out.println(repo.getQuadFrequency("HAPP"));
+//        System.out.println(repo.getQuadFrequency("APPY"));
+//        System.out.println(repo.getQuadFrequency("PPYD"));
+
 
         return score;
     }

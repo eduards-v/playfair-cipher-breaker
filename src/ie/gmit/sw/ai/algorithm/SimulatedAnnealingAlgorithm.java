@@ -78,10 +78,10 @@ public class SimulatedAnnealingAlgorithm {
                 } else {
                     // cool down algorithm to redirect search for better key
                     // rand.nextInt(10)
-                    if(rand.nextInt(10) < Math.exp(delta/temp)){
+                    if(rand.nextInt() < Math.exp(delta/i)){
 
-                        System.out.println("Cooling Probability: " + Math.exp(delta/temp));
-                        System.out.println("COOL DOWN ALGORITHM AT TEMP = " + temp);
+                        System.out.println("Cooling Probability: " + Math.exp(delta/i));
+                        System.out.println("COOL DOWN ALGORITHM AT TEMP = " + i);
                         // try set new best key from current parent
                         if(parentScore - bestScore > 0){
                             bestScore = parentScore;

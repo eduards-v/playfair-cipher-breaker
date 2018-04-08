@@ -19,24 +19,35 @@ public class MatrixTransformer {
     public void transformKey(char[][] matrix){
         int val = rand.nextInt(100);
 
-        if (val == 5 || val == 55)
+        if (val == rand.nextInt(100) || val == rand.nextInt(100)){
             // swap random rows
+            System.out.println("SWAP ROWS");
             swapRows(matrix);
-        else if (val == 6 || val == 66)
+        }
+        else if (val == rand.nextInt(100) || val == rand.nextInt(100)) {
             // swap random columns
+            System.out.println("SWAP COLS");
             swapColumns(matrix);
-        else if (val == 7 || val == 77)
+        }
+        else if (val == rand.nextInt(100) || val == rand.nextInt(100)) {
             // flip all rows
+            System.out.println("FLIP ROWS");
             flipRows(matrix);
-        else if (val == 8 || val == 88)
+        }
+        else if (val == rand.nextInt(100) || val == rand.nextInt(100)) {
             // flip all columns
+            System.out.println("FLIP COLS");
             flipColumns(matrix);
-        else if (val == 9 || val == 99)
+        }
+        else if (val == rand.nextInt(100) || val == rand.nextInt(100)) {
             // reverse matrix
+            System.out.println("REVERSE");
             reverseMetrix(matrix);
-        else
+        }
+        else {
             // swap single cells
             swapCells(matrix);
+        }
     }
 
     private void swapRows(char[][] matrix){
